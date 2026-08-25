@@ -91,10 +91,28 @@ page 50451 "Door Locker Card"
                 end;
             }
 
-            action(TestRecordVariable)
+            action(TestGet)
             {
                 ApplicationArea = All;
-                Caption = 'Test Record Variable';
+                Caption = 'Test Get';
+
+                trigger OnAction()
+                var
+                    LockerRec: Record "Door Locker Master";
+                begin
+                    LockerRec.Get('LOCK002');
+
+                    LockerRec.Price := 900;
+
+                    LockerRec.Modify();
+
+                    Message(
+                        'Locker: %1\Price: %2\Quantity: %3',
+                        LockerRec."Locker Name",
+                        LockerRec.Price,
+                        LockerRec."Available Quantity"
+                        );
+                end;
             }
         }
     }

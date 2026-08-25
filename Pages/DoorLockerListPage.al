@@ -4,6 +4,7 @@ page 50450 "Door Locker List"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Door Locker Master";
+
     layout
     {
         area(Content)
@@ -42,6 +43,41 @@ page 50450 "Door Locker List"
                 {
                     ApplicationArea = All;
                 }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(TestFindFirst)
+            {
+                ApplicationArea = All;
+                Caption = 'Test Find First';
+
+                trigger OnAction()
+                var
+                    LockerRec: Record "Door Locker Master";
+                begin
+                    if LockerRec.FindFirst() then
+                        Message('First Locker: %1', LockerRec."Locker Name")
+                    else
+                        Message('No lockers found.');
+                end;
+            }
+
+            action(TestRecord)
+            {
+                ApplicationArea = All;
+                Caption = 'Test Record';
+
+                trigger OnAction()
+                var
+                    LockerRec: Record "Door Locker Master";
+                begin
+                    LockerRec.SetRange(Status, LockerRec.Status::Available);
+                end;
             }
         }
     }
