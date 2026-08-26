@@ -76,7 +76,20 @@ page 50450 "Door Locker List"
                 var
                     LockerRec: Record "Door Locker Master";
                 begin
+
+
+                    Message(
+                    'Current Page Record: %1',
+                    Rec."Locker Code");
+
                     LockerRec.SetRange(Status, LockerRec.Status::Available);
+
+                    if LockerRec.FindFirst() then
+                        Message('First available locker: %1\price: %2',
+                        LockerRec."Locker Name",
+                        LockerRec.Price)
+                    else
+                        Message('No available lockers found.');
                 end;
             }
         }
