@@ -92,6 +92,43 @@ page 50450 "Door Locker List"
                         Message('No available lockers found.');
                 end;
             }
+            action(TestMainAction)
+            {
+                ApplicationArea = All;
+                Caption = 'Test Main Action';
+
+                trigger OnAction()
+                var
+                    lockRec: Record "Door Locker Master";
+                begin
+
+                    Message('In Test Main Action');
+
+                    lockRec.Get(Rec."Locker Code");
+
+                    Message('GET() Result:\Locker Code: %1\Locker Name: %2\Price: %3',
+                    lockRec."Locker Code",
+                    lockRec."Locker Name",
+                    lockRec.Price);
+
+                    Message('With Filter');
+
+                    lockRec.SetRange("Available Quantity", 1, 999999999);
+
+                    if lockRec.FindFirst() then
+                        Message('Result : \Locker Code: %1\Locker Name: %2',
+                        lockRec."Locker Code",
+                        lockRec."Locker Name");
+
+                    lockRec.Reset();
+
+                    Message('After reset');
+
+                    Message('Result : \Locker Code: %1\Locker Name: %2',
+                        lockRec."Locker Code",
+                        lockRec."Locker Name");
+                end;
+            }
         }
     }
 }

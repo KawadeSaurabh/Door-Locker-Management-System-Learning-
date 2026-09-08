@@ -43,6 +43,11 @@ page 50451 "Door Locker Card"
                 {
                     ApplicationArea = All;
                 }
+
+                field(StockInformation; StockInformation)
+                {
+                    Editable = false;
+                }
             }
         }
     }
@@ -114,6 +119,115 @@ page 50451 "Door Locker Card"
                         );
                 end;
             }
+
+            action(ApplyDiscount)
+            {
+                ApplicationArea = All;
+                Caption = 'Apply Discount';
+
+                trigger OnAction()
+                begin
+                    Rec.ApplyDiscount();
+                end;
+            }
+
+            action(AddStock)
+            {
+                Caption = 'Add Stock';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec."Available Quantity" := Rec."Available Quantity" + 5;
+
+                    Rec.UpdateStatus();
+
+                    if Rec."Available Quantity" > 0
+                    then
+                        StockInformation := 'Stock Available.'
+                    else
+                        StockInformation := 'No Stock Available.';
+
+                    // CurrPage.Update();
+                end;
+            }
+
+            action(ShowAvailableQty)
+            {
+                Caption = 'Show Available Qty';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    locRec: Record "Door Locker Master";
+                begin
+                    locRec.ShowAvailableLockers();
+                end;
+            }
+
+            action(TestNext)
+            {
+                Caption = 'Test Next()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestNext();
+                end;
+            }
+
+            action(TestFindLast)
+            {
+                Caption = 'Test FindLast()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestFindLast();
+                end;
+            }
+
+            action(TestFind)
+            {
+                Caption = 'Test find()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestFind();
+                end;
+            }
+
+            action(RecordBufferConcept)
+            {
+                ApplicationArea = All;
+                Caption = 'Record Buffer Concept';
+
+                trigger OnAction()
+                begin
+                    Rec.RecordBufferConcept();
+                end;
+            }
+
+            action(IsEmptyAndCount)
+            {
+                ApplicationArea = All;
+                Caption = 'IsEmpty() And Count()';
+                trigger OnAction()
+                begin
+                    Rec.TestIsEmpty();
+                    Rec.TestCount();
+                end;
+            }
         }
     }
+
+    var
+        StockInformation: Text[50];
+
+    var
+        ProcessingMessage: Text[100];
+
+    var
+        ProcessedQuantity: Integer;
 }

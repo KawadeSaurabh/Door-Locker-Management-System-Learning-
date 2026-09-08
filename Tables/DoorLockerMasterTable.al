@@ -72,4 +72,114 @@ table 50450 "Door Locker Master"
         else
             Status := Status::Available;
     end;
+
+    procedure ApplyDiscount()
+    begin
+        Rec.Price := Rec.Price - (Rec.Price * 0.10);
+    end;
+
+
+    procedure ShowAvailableLockers()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::Available);
+
+        if LockerRec.FindSet() then
+            repeat
+                Message('%1 -%2',
+                LockerRec."Locker Code",
+                LockerRec."Locker Name");
+            until LockerRec.Next() = 0;
+    end;
+
+    procedure TestNext()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        if LockerRec.FindSet() then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+
+        LockerRec.Next();
+
+        Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+
+        LockerRec.Next();
+
+        Message('%1 - %2',
+           LockerRec."Locker Code",
+           LockerRec."Locker Name");
+    end;
+
+    procedure TestFindLast()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::Available);
+
+        if LockerRec.FindLast() then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+
+    end;
+
+    procedure TestFind()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+
+        if LockerRec.Find('-') then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+
+        if LockerRec.Find('+') then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+    end;
+
+    procedure RecordBufferConcept()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        if LockerRec.FindFirst() then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+
+        if LockerRec.FindLast() then
+            Message('%1 - %2',
+            LockerRec."Locker Code",
+            LockerRec."Locker Name");
+    end;
+
+    procedure TestIsEmpty()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::"Out Of Stock");
+
+        if LockerRec.IsEmpty() then
+            Message('No out of stock lockers found.')
+        else
+            Message('Out of stock lockers exist.');
+    end;
+
+    procedure TestCount()
+    var
+        LockerRec: Record "Door Locker Master";
+        AvailableCount: Integer;
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::Available);
+
+        AvailableCount := LockerRec.Count();
+
+        Message('Available lockers: %1', AvailableCount);
+    end;
 }
