@@ -182,4 +182,9 @@ table 50450 "Door Locker Master"
 
         Message('Available lockers: %1', AvailableCount);
     end;
+
+    procedure TestSetRange()
+    begin
+        
+    end;
 }
