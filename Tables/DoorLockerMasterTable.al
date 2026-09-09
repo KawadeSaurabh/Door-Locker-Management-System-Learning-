@@ -184,7 +184,30 @@ table 50450 "Door Locker Master"
     end;
 
     procedure TestSetRange()
+    var
+        LockerRec: Record "Door Locker Master";
     begin
-        
+        LockerRec.SetRange(Price, 5000, 10000);
+
+        if LockerRec.FindSet() then
+            repeat
+                Message('%1 - %2',
+                LockerRec."Locker Code",
+                LockerRec.Price);
+            until LockerRec.Next() = 0;
+    end;
+
+    procedure TestSetFilter()
+    var
+        LocRec: Record "Door Locker Master";
+    begin
+        LocRec.SetFilter(Price, '>5000');
+
+        if LocRec.FindSet() then
+            repeat
+                Message('%1 - %2',
+                LocRec."Locker Code",
+                LocRec.Price);
+            until LocRec.Next() = 0;
     end;
 }

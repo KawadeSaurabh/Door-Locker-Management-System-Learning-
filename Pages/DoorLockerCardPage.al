@@ -219,6 +219,28 @@ page 50451 "Door Locker Card"
                     Rec.TestCount();
                 end;
             }
+
+            action(TestSetRange)
+            {
+                Caption = 'Test SetRange()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestSetRange();
+                end;
+            }
+
+            action(TestSetFilter)
+            {
+                ApplicationArea = All;
+                Caption = 'Test SetFilter()';
+
+                trigger OnAction()
+                begin
+                    Rec.TestSetFilter();
+                end;
+            }
         }
     }
 
