@@ -210,4 +210,20 @@ table 50450 "Door Locker Master"
                 LocRec.Price);
             until LocRec.Next() = 0;
     end;
+
+    procedure TestGetRange()
+    var
+        LocRec: Record "Door Locker Master";
+
+        MinValue: Integer;
+
+        MaxValue: Integer;
+    begin
+        LocRec.SetRange(Price, 5000, 15000);
+
+        MinValue := LocRec.GetRangeMin(Price);
+        MaxValue := LocRec.GetRangeMax(Price);
+
+        Message('MinValue - %1 And MaxValue - %2', MinValue, MaxValue);
+    end;
 }
