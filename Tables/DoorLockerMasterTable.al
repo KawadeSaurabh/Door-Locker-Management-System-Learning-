@@ -56,6 +56,11 @@ table 50450 "Door Locker Master"
         {
             Clustered = true;
         }
+
+        key(Price; Price)
+        {
+
+        }
     }
 
     trigger OnModify()
@@ -225,5 +230,21 @@ table 50450 "Door Locker Master"
         MaxValue := LocRec.GetRangeMax(Price);
 
         Message('MinValue - %1 And MaxValue - %2', MinValue, MaxValue);
+    end;
+
+    procedure ShowAvailableLockersByPrice()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::Available);
+        LockerRec.SetCurrentKey(Price);
+
+        if LockerRec.FindSet() then
+            repeat
+                Message('%1 - %2 - %3',
+                LockerRec."Locker Code",
+                LockerRec."Locker Name",
+                LockerRec.Price);
+            until LockerRec.Next() = 0;
     end;
 }
