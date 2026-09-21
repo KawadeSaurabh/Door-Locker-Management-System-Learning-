@@ -253,6 +253,17 @@ page 50451 "Door Locker Card"
                 end;
 
             }
+
+            action(SetCurrKey)
+            {
+                Caption = 'SetCurrentKey()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Message('Lets start');
+                end;
+            }
         }
     }
 
