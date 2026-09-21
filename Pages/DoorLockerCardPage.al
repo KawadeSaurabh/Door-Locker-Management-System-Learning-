@@ -264,6 +264,18 @@ page 50451 "Door Locker Card"
                     Message('Lets start');
                 end;
             }
+
+            action(InsertAction)
+            {
+                Caption = 'InsertAction';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.CreateTestLocker();
+                end;
+
+            }
         }
     }
 

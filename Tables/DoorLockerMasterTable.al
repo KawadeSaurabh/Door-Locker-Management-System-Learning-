@@ -247,4 +247,18 @@ table 50450 "Door Locker Master"
                 LockerRec.Price);
             until LockerRec.Next() = 0;
     end;
+
+    // Insert()
+    procedure CreateTestLocker()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec."Locker Code" := 'L0101';
+        LockerRec."Locker Name" := 'Test Locker';
+        LockerRec.Price := 2500;
+        LockerRec."Available Quantity" := 5;
+        LockerRec.Status := LockerRec.Status::Available;
+
+        LockerRec.Insert();
+    end;
 }
