@@ -4,6 +4,7 @@ page 50450 "Door Locker List"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Door Locker Master";
+    CardPageId = "Door Locker Card";
 
     layout
     {
