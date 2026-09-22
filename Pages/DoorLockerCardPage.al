@@ -276,6 +276,30 @@ page 50451 "Door Locker Card"
                 end;
 
             }
+
+            action(TestModify)
+            {
+                Caption = 'Test Modify()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.UpdateTestLockerPrice();
+                end;
+
+            }
+
+            action(TestModifyAll)
+            {
+                Caption = 'Test ModifyAll()';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.UpdateAvailableLockerPrice();
+                end;
+
+            }
         }
     }
 

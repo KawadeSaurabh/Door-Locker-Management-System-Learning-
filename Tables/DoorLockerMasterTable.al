@@ -261,4 +261,50 @@ table 50450 "Door Locker Master"
 
         LockerRec.Insert();
     end;
+
+    // Modify()
+    procedure UpdateTestLockerPrice()
+    var
+        LockerRec: Record "Door Locker Master";
+        IsTrue: Boolean;
+    begin
+        IsTrue := LockerRec.Get('L0101');
+
+        if IsTrue then begin
+            LockerRec.Price := 3000;
+            LockerRec.Modify();
+            Message('Price Updated.');
+        end;
+
+    end;
+
+    // ModifyAll()
+    procedure UpdateAvailableLockerPrice()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.SetRange(Status, LockerRec.Status::Available);
+
+        LockerRec.Price := 5000;
+
+        LockerRec.ModifyAll(Price, 5000);
+    end;
+
+    // Delete()
+    procedure DeleteTestLocker()
+    begin
+        if Rec.Get('L0101') then begin
+            Rec.Delete();
+            Message('Locker L0101 was deleted.');
+        end;
+    end;
+
+    //DeleteAll()
+    procedure DeleteOutOfStockLockers()
+    begin
+        Rec.SetRange(Status, Rec.Status::"Out Of Stock");
+
+        Rec.DeleteAll();
+    end;
+
 }
