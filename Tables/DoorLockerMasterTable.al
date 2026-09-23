@@ -307,4 +307,24 @@ table 50450 "Door Locker Master"
         Rec.DeleteAll();
     end;
 
+    // Without Validate
+    procedure UpdateTestLockerPriceWithoutValidate()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.Get(Rec."Locker Code");
+        LockerRec.Price := -500;
+        LockerRec.Modify();
+    end;
+
+    // With Validate
+    procedure UpdateTestLockerPriceUsingValidate()
+    var
+        LockerRec: Record "Door Locker Master";
+    begin
+        LockerRec.Get(Rec."Locker Code");
+        LockerRec.Validate(Price, -500);
+        LockerRec.Modify();
+    end;
+
 }

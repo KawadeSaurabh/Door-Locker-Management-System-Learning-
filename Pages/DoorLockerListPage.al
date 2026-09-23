@@ -130,6 +130,29 @@ page 50450 "Door Locker List"
                         lockRec."Locker Name");
                 end;
             }
+
+            action(WithoutValidate)
+            {
+                ApplicationArea = All;
+                Caption = 'Without Validate';
+
+                trigger OnAction()
+                begin
+                    Rec.UpdateTestLockerPriceWithoutValidate();
+                end;
+            }
+
+            action(WithValidate)
+            {
+                Caption = 'With Validate';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.UpdateTestLockerPriceUsingValidate();
+                end;
+
+            }
         }
     }
 }
