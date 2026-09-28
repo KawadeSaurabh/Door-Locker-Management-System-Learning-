@@ -79,6 +79,39 @@ page 50457 "Door Loc Master Page"
                     Rec.TestProcedure();
                 end;
             }
+
+            action(TestingProcedure)
+            {
+                Caption = 'Testing Procedure';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestingProcedure();
+                end;
+            }
+
+            action(TestCalReturn)
+            {
+                Caption = 'Return Result';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestingCalculateLockerValue();
+                end;
+            }
+
+            action(DiscountActiom)
+            {
+                Caption = 'Return Discount';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.CheckDiscount();
+                end;
+            }
         }
     }
 }
