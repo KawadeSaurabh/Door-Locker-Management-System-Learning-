@@ -326,5 +326,4 @@ table 50450 "Door Locker Master"
         LockerRec.Validate(Price, -500);
         LockerRec.Modify();
     end;
-
 }
