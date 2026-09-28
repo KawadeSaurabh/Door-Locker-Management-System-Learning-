@@ -327,4 +327,6 @@ table 50450 "Door Locker Master"
         LockerRec.Modify();
     end;
 
+    
+
 }
