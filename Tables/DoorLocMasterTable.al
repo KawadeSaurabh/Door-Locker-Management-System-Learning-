@@ -176,6 +176,7 @@ table 50454 "Door Loc Master T"
     begin
         if LockerRec.Get(Rec.LockerCode) then begin
             ChnageQuantity(LockerRec);
+            LockerRec.Modify();
 
             Message('After calling the procedure, Available Qty: %1', LockerRec.AvailableQty);
         end;
