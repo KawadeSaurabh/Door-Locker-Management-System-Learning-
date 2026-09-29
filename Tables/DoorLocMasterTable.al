@@ -143,14 +143,51 @@ table 50454 "Door Loc Master T"
     end;
 
     procedure CalculateDiscountPrice(Price: Decimal; DiscountPercent: Decimal): Decimal
+    var
+        Discount: Decimal;
     begin
         if Price <= 0 then
-            exit;
-        exit(Price * DiscountPercent);
+            exit
+        else begin
+            Discount := Price * DiscountPercent / 100;
+            exit(Price - Discount);
+        end;
+
+
     end;
 
     procedure CheckDiscount()
     begin
         Message('Result is: %1', CalculateDiscountPrice(100, 10));
     end;
+
+    // Procedure with record parameters
+    procedure ShowLockerDetails(LockerRec: Record "Door Loc Master T")
+    begin
+        Message('Locker Code: %1, Available Qty: %2, Status: %3',
+        LockerRec.LockerCode,
+        LockerRec.AvailableQty,
+        LockerRec.Status);
+    end;
+
+    procedure TestRecord()
+    var
+        LockerRec: Record "Door Loc Master T";
+    begin
+        if LockerRec.Get(Rec.LockerCode) then begin
+            ChnageQuantity(LockerRec);
+
+            Message('After calling the procedure, Available Qty: %1', LockerRec.AvailableQty);
+        end;
+
+
+    end;
+
+    procedure ChnageQuantity(var LockerRec: Record "Door Loc Master T")
+    begin
+        LockerRec.AvailableQty := LockerRec.AvailableQty - 1;
+    end;
+
+
+
 }

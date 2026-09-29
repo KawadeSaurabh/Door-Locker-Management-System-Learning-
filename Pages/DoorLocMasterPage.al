@@ -112,6 +112,17 @@ page 50457 "Door Loc Master Page"
                     Rec.CheckDiscount();
                 end;
             }
+
+            action(PassingRecord)
+            {
+                Caption = 'Passing Record';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.TestRecord();
+                end;
+            }
         }
     }
 }

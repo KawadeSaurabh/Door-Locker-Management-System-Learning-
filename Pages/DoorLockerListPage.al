@@ -151,7 +151,6 @@ page 50450 "Door Locker List"
                 begin
                     Rec.UpdateTestLockerPriceUsingValidate();
                 end;
-
             }
         }
     }
