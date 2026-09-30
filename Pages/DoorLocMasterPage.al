@@ -123,6 +123,18 @@ page 50457 "Door Loc Master Page"
                     Rec.TestRecord();
                 end;
             }
+
+            action(SaleTheLocker)
+            {
+                Caption = 'Sale the locker';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.SellSelectedLocker();
+                end;
+
+            }
         }
     }
 }

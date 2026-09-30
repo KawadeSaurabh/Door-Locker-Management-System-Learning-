@@ -184,11 +184,47 @@ table 50454 "Door Loc Master T"
 
     end;
 
-    procedure ChnageQuantity(var LockerRec: Record "Door Loc Master T")
+    local procedure ChnageQuantity(var LockerRec: Record "Door Loc Master T")
     begin
         LockerRec.AvailableQty := LockerRec.AvailableQty - 1;
     end;
 
+    procedure CheckScope()
+    var
+        LocalVar: Record "Door Loc Master T";
+    begin
 
+    end;
+
+    procedure CheckVariableScope()
+    begin
+
+    end;
+
+    var
+        GlobalVar: Record "Door Loc Master T";
+
+
+    procedure SellSelectedLocker()
+    var
+        LockerRec: Record "Door Loc Master T";
+    begin
+        if LockerRec.Get(Rec.LockerCode) then begin
+            CheckLockerAvailability(LockerRec);
+            DecreaseLockerQuantity(LockerRec);
+            LockerRec.Modify();
+        end;
+    end;
+
+    local procedure CheckLockerAvailability(LockerRec: Record "Door Loc Master T")
+    begin
+        if LockerRec.AvailableQty <= 0 then
+            Error('Locker is out of stock.');
+    end;
+
+    local procedure DecreaseLockerQuantity(var LockerRec: Record "Door Loc Master T")
+    begin
+        LockerRec.AvailableQty := LockerRec.AvailableQty - 1;
+    end;
 
 }
