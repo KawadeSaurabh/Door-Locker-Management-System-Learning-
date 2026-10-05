@@ -135,6 +135,17 @@ page 50457 "Door Loc Master Page"
                 end;
 
             }
+
+            action(TestAllFunctions)
+            {
+                Caption = 'Test All The Functions';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.ALFunctionsChecker();
+                end;
+            }
         }
     }
 }

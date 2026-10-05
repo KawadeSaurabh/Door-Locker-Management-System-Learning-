@@ -227,4 +227,13 @@ table 50454 "Door Loc Master T"
         LockerRec.AvailableQty := LockerRec.AvailableQty - 1;
     end;
 
+
+    procedure ALFunctionsChecker()
+    var
+        LockerRec: Record "Door Loc Master T";
+    begin
+        if LockerRec.Get(Rec.LockerCode) then begin
+            Message('StrLen: %1', StrLen(LockerRec.LockerName));
+        end;
+    end;
 }
