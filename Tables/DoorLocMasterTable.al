@@ -231,9 +231,56 @@ table 50454 "Door Loc Master T"
     procedure ALFunctionsChecker()
     var
         LockerRec: Record "Door Loc Master T";
+        Result: Text[50];
+        ResultNumber: Integer;
+        ResultDate: Date;
+        CurrentDT: DateTime;
     begin
         if LockerRec.Get(Rec.LockerCode) then begin
-            Message('StrLen: %1', StrLen(LockerRec.LockerName));
+            // -----------------Text Functions---------------------
+            // Message('StrLen: %1', StrLen(LockerRec.LockerName));
+            // Message('StrLen: %1', StrLen('Door Locker'));
+            // Result := CopyStr(LockerRec.LockerName, 1, 6);
+            // Message(Result);
+            // Result := CopyStr(LockerRec.LockerName, 6, 3);
+            // Message('Reverse: %1', Result);
+            // Result := DelStr('Locker-001', 7, 2);
+            // Message(Result);
+            // Result := InsStr(LockerRec.LockerName, 'ing', 7);
+            // Message(Result);
+            // Result := UpperCase(LockerRec.LockerName);
+            // Message(Result);
+            // Result := LowerCase(LockerRec.LockerName);
+            // Message(Result);
+            // ResultNumber := StrPos(LockerRec.LockerName, 'id');
+            // Message('Position at: %1', ResultNumber);
+            // Result := SelectStr(2, 'Home,Office,Fireproof,Industrial');
+            // Message(Result);
+            // Result := StrSubstNo(
+            //     'Locker %1 has %2 units available',
+            //     LockerRec.LockerCode,
+            //     LockerRec.AvailableQty);
+
+            // Message(Result);
+
+            //-------------------Date Function----------------------------
+            // ResultDate := Today();
+            // Message('Today''s Date: %1', ResultDate); Actual Current Date
+
+            // ResultDate := WorkDate();
+            // Message('Working Date: %1', ResultDate); BC user's current work date
+
+            // CurrentDT := CurrentDateTime();
+            // Message('Current Date & Time: %1', CurrentDT);
+
+            ResultNumber := Date2DMY(Today(), 1);
+            Message('Day: %1', ResultNumber);
+
+            ResultNumber := Date2DMY(Today(), 2);
+            Message('Month: %1', ResultNumber);
+
+            ResultNumber := Date2DMY(Today(), 3);
+            Message('Year: %1', ResultNumber);
         end;
     end;
 }
