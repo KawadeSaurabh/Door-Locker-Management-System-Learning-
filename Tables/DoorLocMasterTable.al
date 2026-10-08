@@ -273,14 +273,17 @@ table 50454 "Door Loc Master T"
             // CurrentDT := CurrentDateTime();
             // Message('Current Date & Time: %1', CurrentDT);
 
-            ResultNumber := Date2DMY(Today(), 1);
-            Message('Day: %1', ResultNumber);
+            // ResultNumber := Date2DMY(Today(), 1);
+            // Message('Day: %1', ResultNumber);
 
-            ResultNumber := Date2DMY(Today(), 2);
-            Message('Month: %1', ResultNumber);
+            // ResultNumber := Date2DMY(Today(), 2);
+            // Message('Month: %1', ResultNumber);
 
-            ResultNumber := Date2DMY(Today(), 3);
-            Message('Year: %1', ResultNumber);
+            // ResultNumber := Date2DMY(Today(), 3);
+            // Message('Year: %1', ResultNumber);
+
+            ResultDate := DMY2Date(15, 10, 2026);
+            Message('DMY to Date: %1', ResultDate);
         end;
     end;
 }
