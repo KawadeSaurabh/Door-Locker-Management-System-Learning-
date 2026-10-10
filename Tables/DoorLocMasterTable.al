@@ -235,6 +235,8 @@ table 50454 "Door Loc Master T"
         ResultNumber: Integer;
         ResultDate: Date;
         CurrentDT: DateTime;
+        CurrentTime: Time;
+        Num: Decimal;
     begin
         if LockerRec.Get(Rec.LockerCode) then begin
             // -----------------Text Functions---------------------
@@ -282,8 +284,46 @@ table 50454 "Door Loc Master T"
             // ResultNumber := Date2DMY(Today(), 3);
             // Message('Year: %1', ResultNumber);
 
-            ResultDate := DMY2Date(15, 10, 2026);
-            Message('DMY to Date: %1', ResultDate);
+            // ResultDate := DMY2Date(15, 10, 2026);
+            // Message('DMY to Date: %1', ResultDate);
+
+            // ResultDate := CalcDate('<+7D>', Today());
+            // Message('CalcDate() 7 Days: %1', ResultDate);
+            // ResultDate := CalcDate('<+1M>', Today());
+            // Message('CalcDate() 1 Month: %1', ResultDate);
+            // ResultDate := CalcDate('<+1Y>', Today());
+            // Message('CalcDate(): %1', ResultDate);
+            // ResultDate := CalcDate('<-7D>', Today());
+            // Message('CalcDate() Reverse 7 days: %1', ResultDate);
+
+            // CurrentTime := Time();
+            // Message('%1', CurrentTime);
+
+            // Num := Round(125.678, 1);
+            // Message('Round Of Num is: %1', Num);
+
+            // Num := Round(125.678, 0.01, '=');
+            // Message('Round Of Num is: %1', Num);
+
+            // Num := Round(125.678, 0.01, '>');
+            // Message('Round Of Num is: %1', Num);
+
+            // Num := Round(125.678, 0.01, '<');
+            // Message('Round Of Num is: %1', Num);
+
+            // Num := Abs(-250.50);
+            // Message('ABS: %1', Num);
+
+            // Num := Abs(250.50);
+            // Message('ABS: %1', Num);
+
+            Message('5''s Power: %1', Power(5, 2));
+            Message('2''s Cube: %1', Power(2, 3));
+
+            Message('Random number between 1 - 100: %1', Random(100));
+
+            // Min and Max functions are not available.
+
         end;
     end;
 }
