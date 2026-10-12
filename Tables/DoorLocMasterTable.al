@@ -326,4 +326,54 @@ table 50454 "Door Loc Master T"
 
         end;
     end;
+
+    procedure ConvertLockerQuantity()
+    var
+        QtyText: Text;
+        Qty: Decimal;
+    begin
+        QtyText := 'ABC';
+
+        if Evaluate(Qty, QtyText) then
+            Message('Quantity: %1', Qty)
+        else
+            Error('Invalid Quantity.');
+    end;
+
+    procedure ValueToText()
+    var
+        LockerQty: Integer;
+        LockerPrice: Decimal;
+        QtyText: Text;
+        PriceText: Text;
+    begin
+        LockerQty := 25;
+        LockerPrice := 1250.50;
+
+        QtyText := Format(LockerQty);
+        PriceText := Format(LockerPrice);
+
+        Message('Quantity: %1, Price: %2', QtyText, PriceText);
+    end;
+
+    procedure CommonFunction()
+    begin
+        if Confirm('Do you want to continue?', true) then
+            Message('You selected Yes.')
+        else
+            Message('You selected No.');
+    end;
+
+    procedure DynamicText()
+    var
+        MsgText: Text;
+        LockerCode: Code[20];
+        Qty: Integer;
+    begin
+        LockerCode := 'LCk0001';
+        Qty := 15;
+
+        MsgText := StrSubstNo('Locker %1 has %2 units available.', LockerCode, Qty);
+        Message(MsgText);
+    end;
 }
