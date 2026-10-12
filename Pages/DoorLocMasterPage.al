@@ -143,7 +143,7 @@ page 50457 "Door Loc Master Page"
 
                 trigger OnAction()
                 begin
-                    Rec.DynamicText();
+                    Rec.OtherFunctions();
                 end;
             }
         }

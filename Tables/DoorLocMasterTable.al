@@ -376,4 +376,25 @@ table 50454 "Door Loc Master T"
         MsgText := StrSubstNo('Locker %1 has %2 units available.', LockerCode, Qty);
         Message(MsgText);
     end;
+
+    procedure OtherFunctions()
+    var
+        LockerRec: Record "Door Loc Master T";
+
+        LocCode: Text;
+    begin
+        if LockerRec.IsEmpty() then
+            Message('No locker record found.')
+        else
+            Message('Locker record exist.');
+
+        LocCode := 'LCK001';
+        Message('Locker Code: %1', LocCode);
+        Clear(LocCode);
+        Message('Locker Code: %1', LocCode);
+        LocCode := 'LCK002'
+        Message('Locker Code: %1', LocCode);
+    end;
+
+
 }
