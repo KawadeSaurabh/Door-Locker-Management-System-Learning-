@@ -392,7 +392,7 @@ table 50454 "Door Loc Master T"
         Message('Locker Code: %1', LocCode);
         Clear(LocCode);
         Message('Locker Code: %1', LocCode);
-        LocCode := 'LCK002'
+        LocCode := 'LCK002';
         Message('Locker Code: %1', LocCode);
     end;
 
