@@ -14,6 +14,12 @@ table 50456 "Seed Master"
         {
             Caption = 'Seed Name';
             NotBlank = true;
+
+            trigger OnValidate()
+            begin
+                if "Seed Name" = '' then
+                    Error('Seed name cannot be blank');
+            end;
         }
 
         field(3; Status; Option)
@@ -39,4 +45,25 @@ table 50456 "Seed Master"
 
         }
     }
+
+    trigger OnInsert()
+    begin
+        Message('A new seed record has been inserted.');
+    end;
+
+    trigger OnModify()
+    begin
+        Message('An existing seed record has been modified.');
+    end;
+
+    trigger OnDelete()
+    begin
+        Message('The seed record is being created.');
+    end;
+
+    trigger OnRename()
+    begin
+        Message('The seed code has been changed.');
+    end;
+
 }
