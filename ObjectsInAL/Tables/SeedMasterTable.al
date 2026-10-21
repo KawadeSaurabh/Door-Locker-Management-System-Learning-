@@ -2,6 +2,7 @@ table 50456 "Seed Master"
 {
     Caption = 'Seed Master';
     DataClassification = CustomerContent;
+    LookupPageId = "Seed Selection Test";
 
     fields
     {
