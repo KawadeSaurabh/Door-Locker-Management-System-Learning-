@@ -47,6 +47,16 @@ table 50456 "Seed Master"
         }
     }
 
+
+    procedure ShowQCTests()
+    var
+        SeedQCTest: Record "Seed QC Test";
+    begin
+        SeedQCTest.SetRange("Seed Code", "Seed Code");
+        Page.Run(Page::"Seed QC Test List", SeedQCTest);
+    end;
+
+
     trigger OnInsert()
     begin
         Message('A new seed record has been inserted.');
