@@ -3,6 +3,8 @@ table 50459 "Seed QC Result"
 {
     Caption = 'Seed QC Result';
     DataClassification = CustomerContent;
+    LookupPageId = "Seed QC Result List";
+    DrillDownPageId = "Seed QC Result List";
 
     fields
     {

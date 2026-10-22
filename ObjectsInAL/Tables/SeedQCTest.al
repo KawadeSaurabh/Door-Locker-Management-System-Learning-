@@ -3,6 +3,8 @@ table 50458 "Seed QC Test"
 {
     Caption = 'Seed QC Test';
     DataClassification = CustomerContent;
+    LookupPageId = "Seed QC Test List";
+    DrillDownPageId = "Seed QC Test List";
 
     fields
     {
@@ -15,6 +17,7 @@ table 50458 "Seed QC Test"
         field(2; "Seed Code"; Code[20])
         {
             Caption = 'Seed Code';
+            DataClassification = CustomerContent;
             TableRelation = "Seed Master"."Seed Code";
         }
 
