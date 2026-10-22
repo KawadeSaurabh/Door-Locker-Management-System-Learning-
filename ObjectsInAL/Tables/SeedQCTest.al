@@ -1,4 +1,3 @@
-
 table 50458 "Seed QC Test"
 {
     Caption = 'Seed QC Test';
@@ -48,6 +47,7 @@ table 50458 "Seed QC Test"
     {
         fieldgroup(DropDown; "Test No.", "Seed Code", "Test Date")
         {
+
         }
     }
 }
