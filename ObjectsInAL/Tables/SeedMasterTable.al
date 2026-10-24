@@ -2,7 +2,7 @@ table 50456 "Seed Master"
 {
     Caption = 'Seed Master';
     DataClassification = CustomerContent;
-    // LookupPageId = "Seed QC Test List";
+    DrillDownPageId = "Seed QC Test List";
 
     fields
     {
@@ -28,6 +28,14 @@ table 50456 "Seed Master"
             Caption = 'Status';
             OptionMembers = Active,Inactive;
             InitValue = Active;
+        }
+
+        field(4; "QC Test Count"; Integer)
+        {
+            Caption = 'QC Test Count';
+            FieldClass = FlowField;
+            CalcFormula = count("Seed QC Test" where("Seed Code" = field("Seed Code")));
+            Editable = false;
         }
     }
 

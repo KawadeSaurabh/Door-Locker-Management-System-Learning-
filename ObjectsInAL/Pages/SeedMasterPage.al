@@ -24,6 +24,31 @@ page 50459 "Seed Master"
                 {
                     ApplicationArea = All;
                 }
+
+                field("QC Test Count"; Rec."QC Test Count")
+                {
+                    ApplicationArea = All;
+                    // DrillDown = true;
+                }
+            }
+        }
+    }
+
+
+    actions
+    {
+        area(Processing)
+        {
+            action(ShowQCTests)
+            {
+                Caption = 'Show QC Tests';
+                ApplicationArea = All;
+                Image = View;
+
+                trigger OnAction()
+                begin
+                    Rec.ShowQCTests();
+                end;
             }
         }
     }
