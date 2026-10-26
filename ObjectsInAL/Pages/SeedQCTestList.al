@@ -36,4 +36,24 @@ page 50461 "Seed QC Test List"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(TestStatusDateSorting)
+            {
+                Caption = 'Test Status Date Sorting';
+                ApplicationArea = All;
+                Image = SortAscending;
+
+                trigger OnAction()
+                var
+                    QCTest: Record "Seed QC Test";
+                begin
+                    QCTest.TestStatusDateSorting();
+                end;
+            }
+        }
+    }
 }

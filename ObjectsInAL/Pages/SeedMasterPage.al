@@ -50,6 +50,44 @@ page 50459 "Seed Master"
                     Rec.ShowQCTests();
                 end;
             }
+
+            action(ReadSeedPermissionDemo)
+            {
+                Caption = 'Test Seed Read Permission';
+                ApplicationArea = All;
+                Image = View;
+
+                trigger OnAction()
+                var
+                    SeedPermissionDemo: Codeunit "Seed Permission Demo";
+                begin
+                    SeedPermissionDemo.ReadSeed();
+                end;
+            }
+
+            action(TestSeedNameSorting)
+            {
+                Caption = 'Test QC Test Count';
+                ApplicationArea = All;
+                Image = SortAscending;
+
+                trigger OnAction()
+                var
+                    Seed: Record "Seed Master";
+                begin
+                    Seed.TestQCTestCount();
+                end;
+            }
+            action(TestQCFilters)
+            {
+                ApplicationArea = All;
+                Caption = 'Test QC filters';
+
+                trigger OnAction()
+                begin
+
+                end;
+            }
         }
     }
 }

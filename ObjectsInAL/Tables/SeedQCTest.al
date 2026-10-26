@@ -44,7 +44,13 @@ table 50458 "Seed QC Test"
         {
             Clustered = true;
         }
+
+        key(StatusDateKey; "QC Status", "Test Date")
+        {
+
+        }
     }
+
 
     fieldgroups
     {
@@ -53,4 +59,19 @@ table 50458 "Seed QC Test"
 
         }
     }
+
+    procedure TestStatusDateSorting()
+    var
+        QCTest: Record "Seed QC Test";
+    begin
+        QCTest.SetCurrentKey("QC Status", "Test Date");
+
+        if QCTest.FindSet() then
+            repeat
+                Message('Test No.: %1, Status: %2, Date: %3',
+                QCTest."Test No.",
+                Format(QCTest."QC Status"),
+                Format(QCTest."Test Date"));
+            until QCTest.Next() = 0;
+    end;
 }

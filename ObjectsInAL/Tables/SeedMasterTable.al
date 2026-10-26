@@ -37,6 +37,21 @@ table 50456 "Seed Master"
             CalcFormula = count("Seed QC Test" where("Seed Code" = field("Seed Code")));
             Editable = false;
         }
+
+        field(5; "QC Lot Filter"; Date)
+        {
+            Caption = 'QC Test Date Filter';
+            FieldClass = FlowFilter;
+        }
+
+        field(6; "Filtered QC Count"; Integer)
+        {
+            Caption = 'Demo QC Count';
+            FieldClass = FlowField;
+            CalcFormula = count("Seed QC Test" where(
+                "Seed Code" = field("Seed Code"),
+                "Lot No." = field("QC Lot Filter")));
+        }
     }
 
     keys
@@ -44,6 +59,11 @@ table 50456 "Seed Master"
         key(PK; "Seed Code")
         {
             Clustered = true;
+        }
+
+        key(SeedNameKey; "Seed Name")
+        {
+
         }
     }
 
@@ -62,6 +82,38 @@ table 50456 "Seed Master"
     begin
         SeedQCTest.SetRange("Seed Code", "Seed Code");
         Page.Run(Page::"Seed QC Test List", SeedQCTest);
+    end;
+
+    procedure TestSeedNameSorting()
+    var
+        Seed: Record "Seed Master";
+    begin
+        Seed.SetCurrentKey("Seed Name");
+        Seed.SetAscending("Seed Name", false);
+
+        if Seed.FindSet() then
+            repeat
+                Message('%1 - %2', Seed."Seed Code", Seed."Seed Name");
+            until Seed.Next() = 0
+        else
+            Message('No seed record found.');
+    end;
+
+    procedure TestQCTestCount()
+    var
+        Seed: Record "Seed Master";
+    begin
+        if Seed.FindSet() then
+            repeat
+                Seed.CalcFields("QC Test Count");
+                Message(
+                    'Seed: %1\QC Test Count: %2',
+                    Seed."Seed Name",
+                    Seed."QC Test Count");
+            until Seed.Next() = 0
+        else
+            Message('No seed record found.');
+
     end;
 
 
