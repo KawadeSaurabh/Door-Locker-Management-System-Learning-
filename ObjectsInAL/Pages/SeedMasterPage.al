@@ -30,6 +30,8 @@ page 50459 "Seed Master"
                     ApplicationArea = All;
                     // DrillDown = true;
                 }
+
+
             }
         }
     }
@@ -78,14 +80,17 @@ page 50459 "Seed Master"
                     Seed.TestQCTestCount();
                 end;
             }
-            action(TestQCFilters)
+            action(TestLotFlowFilters)
             {
                 ApplicationArea = All;
                 Caption = 'Test QC filters';
+                Image = TestFile;
 
                 trigger OnAction()
+                var
+                    Seed: Record "Seed Master";
                 begin
-
+                    Seed.TestLotFlowFilter();
                 end;
             }
         }

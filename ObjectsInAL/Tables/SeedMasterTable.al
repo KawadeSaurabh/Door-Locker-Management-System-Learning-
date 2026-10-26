@@ -38,7 +38,7 @@ table 50456 "Seed Master"
             Editable = false;
         }
 
-        field(5; "QC Lot Filter"; Date)
+        field(5; "QC Lot Filter"; Code[20])
         {
             Caption = 'QC Test Date Filter';
             FieldClass = FlowFilter;
@@ -51,8 +51,11 @@ table 50456 "Seed Master"
             CalcFormula = count("Seed QC Test" where(
                 "Seed Code" = field("Seed Code"),
                 "Lot No." = field("QC Lot Filter")));
+
+            Editable = false;
         }
     }
+
 
     keys
     {
@@ -75,6 +78,19 @@ table 50456 "Seed Master"
         }
     }
 
+    procedure TestLotFlowFilter()
+    var
+        Seed: Record "Seed Master";
+    begin
+        if Seed.FindFirst() then begin
+            Seed.SetRange("QC Lot Filter", 'LOT-A');
+            Seed.CalcFields("Filtered QC Count");
+
+            Message(
+                'Lot Filter: LOT-A. Matching QC Tests: %1',
+                Seed."Filtered QC Count");
+        end;
+    end;
 
     procedure ShowQCTests()
     var
