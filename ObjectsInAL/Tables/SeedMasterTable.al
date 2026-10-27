@@ -132,6 +132,16 @@ table 50456 "Seed Master"
 
     end;
 
+    procedure TestInitAndClear()
+    var
+        Seed: Record "Seed Master";
+    begin
+        Seed.Init();
+        Seed."Seed Code" := 'Test001';
+        Seed."Seed Name" := 'Test Seed';
+
+    end;
+
 
     trigger OnInsert()
     begin
