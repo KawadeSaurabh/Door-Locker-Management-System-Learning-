@@ -115,4 +115,9 @@ page 50459 "Seed Master"
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        Message('Seed List Page Opened.');
+    end;
 }
