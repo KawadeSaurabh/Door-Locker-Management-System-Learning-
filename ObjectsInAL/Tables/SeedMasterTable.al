@@ -140,6 +140,16 @@ table 50456 "Seed Master"
         Seed."Seed Code" := 'Test001';
         Seed."Seed Name" := 'Test Seed';
 
+        Message('Before Init: %1 - %2',
+            Seed."Seed Code",
+            Seed."Seed Name");
+
+        Seed.Init();
+
+        Message('After Init: %1 - %2',
+        Seed."Seed Code",
+        Seed."Seed Name");
+
     end;
 
 

@@ -4,6 +4,7 @@ page 50459 "Seed Master"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Seed Master";
+    CardPageId = "Seed Card Page";
 
     layout
     {
@@ -91,6 +92,25 @@ page 50459 "Seed Master"
                     Seed: Record "Seed Master";
                 begin
                     Seed.TestLotFlowFilter();
+                end;
+            }
+
+            action(TestInitAndClear)
+            {
+                Caption = 'Test Init and Clear';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    Seed: Record "Seed Master";
+                begin
+                    if not Seed.FindFirst() then
+                        Error('No seed record found.');
+                    Seed.Init();
+                    Seed.Modify();
+
+                    Message('Record modified. Check the seed list');
+
                 end;
             }
         }
