@@ -120,4 +120,9 @@ page 50459 "Seed Master"
     begin
         Message('Seed List Page Opened.');
     end;
+
+    trigger OnAfterGetRecord()
+    begin
+        Rec.CalcFields("QC Test Count");
+    end;
 }
