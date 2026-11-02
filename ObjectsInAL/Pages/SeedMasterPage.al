@@ -5,6 +5,11 @@ page 50459 "Seed Master"
     UsageCategory = Lists;
     SourceTable = "Seed Master";
     CardPageId = "Seed Card Page";
+    SourceTableView = where(Status = const(Active));
+    Editable = false;
+    InsertAllowed = false;
+    ModifyAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {
