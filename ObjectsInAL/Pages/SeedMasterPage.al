@@ -36,12 +36,13 @@ page 50459 "Seed Master"
                     ApplicationArea = All;
                     // DrillDown = true;
                 }
-
-
             }
         }
-    }
+        area(FactBoxes)
+        {
 
+        }
+    }
 
     actions
     {
