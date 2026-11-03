@@ -27,6 +27,15 @@ page 50463 "Seed Card Page"
                 }
             }
         }
+
+        area(FactBoxes)
+        {
+            part(QCInfo; "Seed QC FactBox")
+            {
+
+            }
+
+        }
     }
 
     actions
