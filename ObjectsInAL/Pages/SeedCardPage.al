@@ -32,7 +32,8 @@ page 50463 "Seed Card Page"
         {
             part(QCInfo; "Seed QC FactBox")
             {
-
+                ApplicationArea = All;
+                SubPageLink = "Seed Code" = field("Seed Code");
             }
 
         }
