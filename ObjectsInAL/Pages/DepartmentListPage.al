@@ -11,9 +11,14 @@ page 50468 "Department List"
         {
             repeater(General)
             {
-                field(Name; NameSource)
+                field("Department Code"; Rec."Department Code")
                 {
+                    ApplicationArea = All;
+                }
 
+                field("Department Name"; Rec."Department Name")
+                {
+                    ApplicationArea = All;
                 }
             }
         }
